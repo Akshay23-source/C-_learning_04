@@ -1,0 +1,267 @@
+Concepts today:
+
+1️⃣ Structure of a C Program
+2️⃣ Variables & Data Types
+
+1️⃣ Structure of a C Program
+🧠 Mental Model
+
+Think of a C program like a movie.
+
+A movie has:
+
+Title
+
+Cast
+
+Story
+
+Starting point
+
+Similarly, a C program has:
+
+Part	Purpose
+#include	Import tools
+main()	Starting point
+{ }	Program body
+statements	Instructions
+Basic C Program
+#include <stdio.h>
+
+int main()
+{
+    printf("Hello World");
+    return 0;
+}
+🔍 Breaking it Down
+1. #include <stdio.h>
+
+Meaning:
+👉 Bring Standard Input Output library
+
+Why?
+
+Because printf() is defined inside it.
+
+Without it, the compiler doesn't know what printf is.
+
+📌 Real-world example
+
+Imagine cooking.
+
+Before cooking you bring:
+
+knife
+
+pan
+
+spoon
+
+#include means bringing tools before work.
+
+2. int main()
+
+This is the starting point of every C program.
+
+When the program runs, the computer asks:
+
+"Where should I start executing?"
+
+Answer → main()
+
+📌 If main() does not exist → program will not run.
+
+3. { } Curly Braces
+
+These define the body of the function.
+
+Everything inside them is executed.
+
+{
+   instructions
+}
+
+Think of it as a room where work happens.
+
+4. printf()
+
+Used to print output to screen.
+
+Example:
+
+printf("Hello");
+
+Output
+
+Hello
+5. return 0;
+
+Meaning:
+
+👉 Program finished successfully.
+
+Operating system receives 0 and understands everything went fine.
+
+🧠 Why This Structure Exists
+
+Computers execute programs step by step.
+
+So C enforces a clear structure:
+
+Start → main() → execute instructions → return result
+🔗 Connection to What You Already Know
+
+If you know Java / C++:
+
+Java:
+
+public static void main(String args[])
+
+C:
+
+int main()
+
+Same idea.
+
+Both are entry points of the program.
+
+🧠 Memory Trick
+
+Remember this sentence:
+
+👉 "Bring tools → Start work → Do instructions → Finish."
+
+Which maps to:
+
+#include
+main()
+statements
+return
+2️⃣ Variables & Data Types
+
+Now we learn how a program stores information.
+
+🧠 Mental Model
+
+Imagine your room.
+
+You store things in boxes.
+
+Different boxes hold different things:
+
+Box	Holds
+water bottle	liquid
+book shelf	books
+wardrobe	clothes
+
+Similarly, computers store data in variables.
+
+What is a Variable?
+
+A variable is a named storage location in memory.
+
+Example:
+
+int age = 20;
+
+Meaning:
+
+Computer creates a memory box named age storing value 20.
+
+Types of Data (Data Types)
+
+Different types of information require different memory sizes.
+
+Data Type	Stores	Example
+int	whole numbers	10
+float	decimal numbers	3.14
+char	single character	'A'
+double	large decimal	25.98765
+Example Program
+#include <stdio.h>
+
+int main()
+{
+    int age = 21;
+    float height = 5.8;
+    char grade = 'A';
+
+    printf("%d\n", age);
+    printf("%f\n", height);
+    printf("%c\n", grade);
+
+    return 0;
+}
+
+Output
+
+21
+5.800000
+A
+🔍 Why Data Types Exist
+
+Computers manage memory very carefully.
+
+Example:
+
+Type	Memory Used
+char	1 byte
+int	4 bytes
+float	4 bytes
+double	8 bytes
+
+If everything was stored the same way, memory would be wasted.
+
+So C asks you to specify the type.
+
+🔗 Connection to What You Already Know
+
+Java / C++ variables:
+
+int age = 20;
+
+Same idea in C.
+
+But C is closer to hardware, so types matter more.
+
+🧠 Memory Trick
+
+Think of variables like:
+
+📦 Labeled boxes in RAM
+
+Example:
+
+age → 21
+height → 5.8
+grade → 'A'
+🔎 Interview Insight
+
+Interviewers often ask:
+
+Question 1
+
+Why must main() exist in C?
+
+Answer:
+
+Because execution always starts from main().
+
+Question 2
+
+What is a variable?
+
+Answer:
+
+A named memory location used to store data.
+
+🧠 What You Should Remember Today
+C Program Flow
+#include
+main()
+{
+   statements
+}
+return 0;
+Variable Concept
+variable = named memory box
