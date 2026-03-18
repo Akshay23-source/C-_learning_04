@@ -1,0 +1,187 @@
+🧠 Concept 1: Operators in C (How Logic Happens)
+✅ What it is
+
+Operators are symbols that perform operations on data.
+
+int a = 10, b = 5;
+int sum = a + b;
+💡 Real-World Analogy
+
+Think of operators like tools 🛠️:
+
++ → Add tool
+
+- → Subtract tool
+
+* → Multiply tool
+
+/ → Divide tool
+
+👉 Variables = raw materials
+👉 Operators = tools to process them
+
+⚙️ Why it works (Important 🔥)
+
+👉 C converts expressions into machine-level instructions
+
+Example:
+
+int c = a + b;
+
+Internally:
+👉 CPU performs addition using registers
+
+📚 Types of Operators (Placement Focus)
+1. Arithmetic
++  -  *  /  %
+2. Relational (Comparison)
+>  <  ==  !=  >=  <=
+3. Logical (Decision Making)
+&&  ||  !
+🔥 Important Trick (VERY ASKED)
+Integer Division Problem
+int a = 5 / 2;
+printf("%d", a);  // Output: 2 ❗
+
+👉 Why?
+
+Because:
+
+Both are integers → result is integer
+
+Decimal part is removed
+
+🔗 Connection to what you know
+
+Same as Java/C++
+
+But more strict than Python
+
+👉 In Python:
+
+5 / 2 = 2.5
+
+👉 In C:
+
+5 / 2 = 2
+💻 Example
+#include <stdio.h>
+
+int main() {
+    int a = 10, b = 3;
+
+    printf("%d\n", a + b); // 13
+    printf("%d\n", a / b); // 3
+    printf("%d\n", a % b); // 1
+
+    return 0;
+}
+🧠 Memory Trick
+
+👉 Remember:
+
+“If both are int → result is int.”
+
+🧠 Concept 2: Input & Output (printf & scanf)
+✅ What it is
+
+👉 How your program talks to the user
+
+printf() → Output
+
+scanf() → Input
+
+💡 Real-World Analogy
+
+Think of program like a person 🧑‍💻:
+
+printf() → speaking
+
+scanf() → listening
+
+⚙️ Why it works (Important 🔥)
+
+👉 Both come from stdio.h
+
+👉 scanf() uses memory addresses to store input
+
+This is VERY IMPORTANT:
+
+int a;
+scanf("%d", &a);
+
+👉 &a means:
+“Store value in address of a”
+
+🔥 Why & is used (INTERVIEW QUESTION)
+
+👉 Because C works with memory directly
+
+Variable = box
+
+& = location of that box
+
+👉 scanf needs location, not value
+
+🔗 Connection to what you know
+
+In Python:
+
+a = int(input())
+
+👉 No need for address (handled automatically)
+
+In C:
+👉 YOU control memory → more powerful, but tricky
+
+💻 Example
+#include <stdio.h>
+
+int main() {
+    int age;
+
+    printf("Enter your age: ");
+    scanf("%d", &age);
+
+    printf("Your age is %d", age);
+
+    return 0;
+}
+🧠 Memory Trick
+
+👉 Remember:
+
+“scanf needs address, printf needs value.”
+
+🎯 Interview Insight (VERY IMPORTANT)
+
+Common questions:
+
+❓ Why do we use & in scanf?
+❓ Difference between / and %?
+❓ What happens in integer division?
+
+👉 Now you can answer all confidently.
+
+🚀 Today’s Mini Task
+
+Take 2 numbers as input
+
+Print:
+
+Sum
+
+Difference
+
+Product
+
+Division
+
+Remainder
+
+🔥 What You Learned Today
+
+✔ How operations happen in C
+✔ Why integer division behaves differently
+✔ How input/output really works
+✔ Why & is critical (memory concept)
