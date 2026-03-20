@@ -1,0 +1,170 @@
+Today we learn one of the MOST IMPORTANT topics for coding rounds:
+
+👉 Loops (Repetition = Power in programming)
+
+🧠 Concept 1: for Loop (Controlled Repetition)
+✅ What it is
+
+👉 Used when you know how many times to repeat
+
+for (initialization; condition; update) {
+    // code
+}
+💡 Real-World Analogy
+
+Think like this:
+
+👉 You are doing 10 push-ups 💪
+
+Start → 1
+
+Check → until 10
+
+Increase → +1
+
+That’s exactly a for loop.
+
+⚙️ Why it works (Important 🔥)
+for (int i = 1; i <= 5; i++)
+
+Break it mentally:
+
+int i = 1 → start
+
+i <= 5 → check
+
+i++ → update
+
+👉 Loop runs until condition becomes FALSE
+
+🔥 Internal Flow (INTERVIEW IMPORTANT)
+
+Order:
+
+👉 Initialization → Condition → Body → Update → Condition → ...
+
+💻 Example
+#include <stdio.h>
+
+int main() {
+    for (int i = 1; i <= 5; i++) {
+        printf("%d ", i);
+    }
+    return 0;
+}
+
+👉 Output:
+
+1 2 3 4 5
+🔗 Connection to what you know
+
+Same in Java/C++
+
+Python:
+
+for i in range(1,6):
+
+👉 C gives you full control manually
+
+🧠 Memory Trick
+
+👉 Remember:
+
+“for = when count is known”
+
+🧠 Concept 2: while Loop (Condition-Based Repetition)
+✅ What it is
+
+👉 Used when you don’t know how many times to repeat
+
+while (condition) {
+    // code
+}
+💡 Real-World Analogy
+
+👉 Think:
+
+“Keep eating 🍕 until you are full”
+
+You don’t know exact count.
+
+⚙️ Why it works (Important 🔥)
+int i = 1;
+while (i <= 5)
+
+👉 Condition checked first
+👉 If TRUE → runs
+👉 If FALSE → stops
+
+⚠️ MOST COMMON MISTAKE (VERY IMPORTANT)
+
+👉 Forgetting update → infinite loop
+
+while (i <= 5) {
+    printf("%d", i);
+}
+
+❌ i never changes → runs forever
+
+💻 Example
+#include <stdio.h>
+
+int main() {
+    int i = 1;
+
+    while (i <= 5) {
+        printf("%d ", i);
+        i++;
+    }
+
+    return 0;
+}
+🔗 Connection to what you know
+
+Same in Java/C++
+
+Python:
+
+while i <= 5:
+🧠 Memory Trick
+
+👉 Remember:
+
+“while = when condition matters more than count”
+
+⚡ BONUS (INTERVIEW GOLD)
+Difference: for vs while
+for loop	while loop
+Known iterations	Unknown iterations
+Compact	Flexible
+Used in counting	Used in conditions
+🎯 Interview Insight (VERY IMPORTANT)
+
+They may ask:
+
+❓ Difference between for and while?
+❓ When to use which?
+❓ What causes infinite loop?
+
+👉 Now you understand, not memorize.
+
+🚀 Today’s Mini Task
+
+Print numbers from 1 to 10 using:
+
+for loop
+
+while loop
+
+Print:
+
+1
+22
+333
+4444
+🔥 What You Learned Today
+
+✔ How loops actually work
+✔ Internal flow of for loop
+✔ When to use while
+✔ Infinite loop concept
