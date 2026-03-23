@@ -1,0 +1,151 @@
+Today we complete your loop mastery with 2 powerful concepts:
+
+👉 do-while loop
+👉 break & continue (control flow — VERY IMPORTANT for interviews)
+
+🧠 Concept 1: do-while Loop (Execute First, Check Later)
+✅ What it is
+
+👉 A loop that runs at least once, even if condition is false
+
+do {
+    // code
+} while (condition);
+💡 Real-World Analogy
+
+👉 Think:
+
+You try food once 🍜, then decide if you want more
+
+First → eat
+Then → decide
+⚙️ Why it works (Important 🔥)
+
+👉 Difference from while:
+
+while	do-while
+Check first	Execute first
+May not run	Runs at least once
+🔥 Key Insight
+int i = 10;
+
+do {
+    printf("%d", i);
+} while (i < 5);
+
+👉 Output:
+
+10
+
+🔥 Even though condition is false → runs once
+
+💻 Example
+#include <stdio.h>
+
+int main() {
+    int i = 1;
+
+    do {
+        printf("%d ", i);
+        i++;
+    } while (i <= 5);
+
+    return 0;
+}
+🔗 Connection to what you know
+Same in Java/C++
+Rarely used in Python (no direct equivalent)
+🧠 Memory Trick
+
+👉 Remember:
+
+“do-while = first do, then check”
+
+🧠 Concept 2: break & continue (Control the Loop)
+✅ What it is
+
+👉 These are control statements used inside loops
+
+🔴 break → STOP the loop completely
+💡 Analogy
+
+👉 You are watching a boring movie 🎬
+→ You leave immediately
+
+💻 Example
+#include <stdio.h>
+
+int main() {
+    for (int i = 1; i <= 10; i++) {
+        if (i == 5) {
+            break;
+        }
+        printf("%d ", i);
+    }
+    return 0;
+}
+
+👉 Output:
+
+1 2 3 4
+🟡 continue → SKIP current iteration
+💡 Analogy
+
+👉 Teacher calls roll number
+
+If absent → skip
+Continue with next student
+💻 Example
+#include <stdio.h>
+
+int main() {
+    for (int i = 1; i <= 5; i++) {
+        if (i == 3) {
+            continue;
+        }
+        printf("%d ", i);
+    }
+    return 0;
+}
+
+👉 Output:
+
+1 2 4 5
+⚙️ Why it works (Important 🔥)
+
+👉 break → exits loop immediately
+👉 continue → skips rest of loop body and jumps to next iteration
+
+🔥 Internal Flow Difference
+Statement	Effect
+break	exit loop
+continue	skip iteration
+🔗 Connection to what you know
+Same in Java/C++
+Python also has both
+🧠 Memory Trick
+
+👉 Remember:
+
+“break = exit, continue = skip”
+
+🎯 Interview Insight (VERY IMPORTANT)
+
+Common tricky questions:
+
+❓ Difference between while and do-while?
+❓ When does do-while execute at least once?
+❓ break vs continue difference?
+
+👉 These are frequently asked in placements
+
+🚀 Today’s Mini Task
+Print numbers from 1–10
+Skip multiples of 3 (use continue)
+Stop loop when number becomes 7 (use break)
+🔥 What You Learned Today
+
+✔ Why do-while is different
+✔ Guaranteed execution concept
+✔ How to control loops
+✔ break vs continue deeply
