@@ -1,0 +1,299 @@
+
+
+👉 **Recursion**
+
+---
+
+# 🧠 Concept 1: What is Recursion?
+
+## ✅ Definition
+
+👉 Recursion means:
+
+> A function calling itself.
+
+```c id="r3f5t6"
+function() {
+    function();
+}
+```
+
+---
+
+## 💡 Real-World Analogy
+
+Think of **two mirrors facing each other 🪞**
+
+Mirror reflects mirror
+→ which reflects mirror
+→ which reflects mirror…
+
+That repeating behavior is recursion.
+
+---
+
+## ⚙️ Why it works (VERY IMPORTANT 🔥)
+
+Normally:
+
+* Function finishes
+* Control returns back
+
+In recursion:
+👉 Function pauses itself and creates a **new copy** of itself in memory.
+
+Each call gets:
+
+* its own variables
+* its own execution state
+
+Stored in:
+👉 **Call Stack**
+
+---
+
+# 🧠 Mental Model (MOST IMPORTANT)
+
+Think like climbing stairs 🪜
+
+To reach stair 5:
+
+* first reach stair 4
+* before that stair 3
+* before that stair 2
+
+👉 Problem solves smaller version of itself.
+
+---
+
+# 💻 Basic Example
+
+```c id="mrmjvf"
+#include <stdio.h>
+
+void hello(int n) {
+    if(n == 0)
+        return;
+
+    printf("Hello\n");
+    hello(n - 1);
+}
+
+int main() {
+    hello(3);
+    return 0;
+}
+```
+
+---
+
+## 🔥 Step-by-Step Execution
+
+```id="fs6cux"
+hello(3)
+hello(2)
+hello(1)
+hello(0)
+STOP
+```
+
+Then control returns backward.
+
+---
+
+## 🧠 Memory Trick
+
+👉 Remember:
+
+**“Recursion = function solving smaller version of same problem.”**
+
+---
+
+# 🧠 Concept 2: Base Case (MOST IMPORTANT PART)
+
+## ✅ What it is
+
+👉 Base case is the **stopping condition**
+
+Without it:
+❌ infinite recursion
+❌ stack overflow
+
+---
+
+## 💡 Real-World Analogy
+
+Imagine:
+You keep photocopying papers endlessly 📄
+
+Eventually:
+👉 machine crashes
+
+Same in recursion.
+
+---
+
+## ⚙️ Why Base Case Matters
+
+```c id="obg4u8"
+if(n == 0)
+    return;
+```
+
+👉 This tells recursion:
+“STOP here.”
+
+---
+
+# ⚠️ MOST COMMON INTERVIEW QUESTION
+
+## What happens if base case is missing?
+
+👉 Function keeps calling itself forever.
+
+Result:
+❌ Stack Overflow Error
+
+---
+
+# 💻 Example Without Base Case
+
+```c id="tbdm72"
+void fun() {
+    fun();
+}
+```
+
+👉 Crashes eventually.
+
+---
+
+# 🔥 Call Stack Understanding (VERY IMPORTANT)
+
+When recursion happens:
+
+```id="0y4fup"
+main()
+  hello(3)
+    hello(2)
+      hello(1)
+        hello(0)
+```
+
+Each call is stacked in memory.
+
+👉 Last call finishes first.
+
+This is:
+
+## LIFO
+
+(Last In First Out)
+
+Same as:
+📚 stack of plates
+
+---
+
+# 🔗 Connection to what you know
+
+Recursion is used in:
+
+* Trees
+* Graphs
+* Backtracking
+* DFS
+* Dynamic Programming
+
+👉 Very important for DSA later.
+
+---
+
+# 💻 Example: Factorial
+
+```c id="rq69bh"
+#include <stdio.h>
+
+int fact(int n) {
+    if(n == 0)
+        return 1;
+
+    return n * fact(n - 1);
+}
+
+int main() {
+    printf("%d", fact(5));
+    return 0;
+}
+```
+
+---
+
+# 🔥 How It Thinks
+
+```id="lkwl5n"
+fact(5)
+5 * fact(4)
+5 * 4 * fact(3)
+...
+5 * 4 * 3 * 2 * 1
+```
+
+👉 Final Answer:
+
+```id="ys43gx"
+120
+```
+
+---
+
+# 🧠 Memory Trick
+
+👉 Remember:
+
+**“Base case stops, recursive case repeats.”**
+
+---
+
+# 🎯 Interview Insight (VERY IMPORTANT)
+
+Common questions:
+
+❓ What is recursion?
+❓ Why base case is needed?
+❓ Difference between loop and recursion?
+❓ What is stack overflow?
+
+---
+
+# ⚡ Loop vs Recursion
+
+| Loop                    | Recursion                    |
+| ----------------------- | ---------------------------- |
+| Repeats using condition | Repeats using function calls |
+| Uses less memory        | Uses more memory             |
+| Faster usually          | Elegant for complex problems |
+
+---
+
+# 🚀 Today’s Mini Task
+
+1. Write recursive function for:
+
+* Sum of first N numbers
+
+2. Write recursive function for:
+
+* Print numbers from N to 1
+
+---
+
+# 🔥 What You Learned Today
+
+✔ What recursion really is
+✔ Base case importance
+✔ Stack behavior
+✔ How recursion thinks internally
+
+---
+
