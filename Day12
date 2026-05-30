@@ -1,0 +1,507 @@
+
+
+Today we'll learn the **4 most important string functions** asked in interviews.
+
+Before learning them, remember:
+
+👉 A string is just a character array ending with `'\0'`.
+
+To use string functions:
+
+```c
+#include <string.h>
+```
+
+---
+
+# 🧠 Concept 1: `strlen()` and `strcpy()`
+
+---
+
+## ✅ `strlen()` — Find String Length
+
+### What it does
+
+Counts the number of characters in a string.
+
+```c
+strlen("Akshay")
+```
+
+Result:
+
+```text
+6
+```
+
+---
+
+## ⚠️ Important
+
+```c
+char name[] = "CAT";
+```
+
+Memory:
+
+```text
+C A T \0
+```
+
+Total memory cells = 4
+
+But:
+
+```c
+strlen(name)
+```
+
+returns:
+
+```text
+3
+```
+
+Why?
+
+Because `strlen()` does NOT count `\0`.
+
+---
+
+## 💡 Real-World Analogy
+
+Think of a word written on paper.
+
+```text
+CAT
+```
+
+You count visible letters only.
+
+You don't count the invisible "END" marker.
+
+---
+
+## 💻 Example
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+
+    char name[] = "Akshay";
+
+    printf("%lu", strlen(name));
+
+    return 0;
+}
+```
+
+Output:
+
+```text
+6
+```
+
+---
+
+## 🧠 Memory Trick
+
+Remember:
+
+**"strlen counts characters before `\0`."**
+
+---
+
+# ✅ `strcpy()` — Copy a String
+
+### What it does
+
+Copies one string into another.
+
+---
+
+## 💻 Example
+
+```c
+char source[] = "Hello";
+char destination[20];
+
+strcpy(destination, source);
+```
+
+Now:
+
+```text
+destination = Hello
+```
+
+---
+
+## 💡 Real-World Analogy
+
+Think of photocopying a document 📄
+
+Original remains unchanged.
+
+A copy is created elsewhere.
+
+---
+
+## ⚠️ Important Interview Point
+
+This is WRONG:
+
+```c
+char a[10];
+char b[10] = "Hello";
+
+a = b;
+```
+
+❌ Error
+
+Arrays cannot be assigned directly.
+
+Use:
+
+```c
+strcpy(a, b);
+```
+
+✅ Correct
+
+---
+
+## 🧠 Memory Trick
+
+Remember:
+
+**"Strings are copied using `strcpy()`, not `=`."**
+
+---
+
+# 🧠 Concept 2: `strcmp()` and `strcat()`
+
+---
+
+# ✅ `strcmp()` — Compare Strings
+
+### What it does
+
+Checks whether two strings are equal.
+
+---
+
+## 💻 Example
+
+```c
+strcmp("CAT", "CAT")
+```
+
+Result:
+
+```text
+0
+```
+
+---
+
+## ⚠️ VERY IMPORTANT
+
+Many students think:
+
+```text
+1 = equal
+0 = not equal
+```
+
+❌ Wrong
+
+For `strcmp()`:
+
+```text
+0 = equal
+```
+
+---
+
+## Example
+
+```c
+if(strcmp(a, b) == 0)
+{
+    printf("Equal");
+}
+```
+
+---
+
+## 💡 Why?
+
+Because:
+
+`strcmp()` returns:
+
+```text
+0
+```
+
+when no difference is found.
+
+---
+
+## 🧠 Memory Trick
+
+Remember:
+
+**"strcmp returns 0 when strings are same."**
+
+---
+
+# ✅ `strcat()` — Join Strings
+
+### What it does
+
+Combines two strings.
+
+---
+
+## Example
+
+```c
+char a[20] = "Hello ";
+char b[] = "World";
+
+strcat(a, b);
+```
+
+Result:
+
+```text
+Hello World
+```
+
+---
+
+## 💡 Real-World Analogy
+
+Think of attaching two train compartments 🚆
+
+```text
+Hello
++
+World
+=
+Hello World
+```
+
+---
+
+## ⚠️ Important
+
+Destination array must have enough space.
+
+```c
+char a[20];
+```
+
+Good ✅
+
+```c
+char a[5];
+```
+
+Danger ❌
+
+May cause memory corruption.
+
+---
+
+## 🧠 Memory Trick
+
+Remember:
+
+**"strcat joins strings at the end."**
+
+---
+
+# 🔥 Interview Gold: Why Can't We Use `==`?
+
+Many beginners write:
+
+```c
+if(a == b)
+```
+
+for strings.
+
+❌ Wrong
+
+---
+
+Why?
+
+Because:
+
+```c
+a
+```
+
+and
+
+```c
+b
+```
+
+represent memory addresses.
+
+`==` compares addresses, not content.
+
+---
+
+Use:
+
+```c
+strcmp(a, b)
+```
+
+✅ Correct
+
+---
+
+# 🎯 Most Asked Placement Questions
+
+### Q1
+
+Difference between:
+
+```c
+sizeof(str)
+```
+
+and
+
+```c
+strlen(str)
+```
+
+Answer:
+
+| sizeof          | strlen           |
+| --------------- | ---------------- |
+| Memory occupied | Characters count |
+| Includes `\0`   | Excludes `\0`    |
+
+---
+
+### Q2
+
+Why use `strcmp()` instead of `==`?
+
+Answer:
+
+`==` compares addresses.
+
+`strcmp()` compares characters.
+
+---
+
+### Q3
+
+Which header file contains string functions?
+
+Answer:
+
+```c
+#include <string.h>
+```
+
+---
+
+# 🔗 Connection to What You Already Know
+
+In Python:
+
+```python
+a == b
+```
+
+compares content.
+
+In C:
+
+```c
+a == b
+```
+
+does NOT compare string content.
+
+This difference is frequently asked in interviews.
+
+---
+
+# 🚀 Today's Mini Tasks
+
+### Task 1
+
+Take a string and print its length.
+
+---
+
+### Task 2
+
+Copy one string into another.
+
+---
+
+### Task 3
+
+Check whether two strings are equal.
+
+---
+
+### Task 4
+
+Join first name and last name.
+
+Example:
+
+```text
+Akshay
+Gabriel
+```
+
+Output:
+
+```text
+Akshay Gabriel
+```
+
+---
+
+# 🔥 What You Learned Today
+
+✔ `strlen()`
+✔ `strcpy()`
+✔ `strcmp()`
+✔ `strcat()`
+✔ Why `==` fails for strings
+✔ Difference between `strlen()` and `sizeof()`
+
+---
+
+# 📈 Placement Readiness Update
+
+You are now around **45% complete** with the roadmap.
+
+The next major topic is the one that separates average students from strong C programmers:
+
+# 🚀 Pointers (Part 1)
+
+Most interviewers ask pointer questions because pointers reveal whether you truly understand memory.
+
+Tomorrow we begin:
+
+
