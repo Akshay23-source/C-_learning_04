@@ -1,0 +1,498 @@
+
+
+Today we learn a topic that interviewers often use to test whether you understand **memory management**:
+
+# 🚀 Dynamic Memory Allocation (DMA)
+
+Before today, every array we created had a fixed size:
+
+```c
+int arr[100];
+```
+
+But what if you don't know the size beforehand?
+
+That's where Dynamic Memory Allocation comes in.
+
+---
+
+# 🧠 Concept 1: `malloc()` – Creating Memory at Runtime
+
+## ✅ The Problem
+
+Suppose you're building a program for student records.
+
+You don't know if there will be:
+
+```text
+10 students
+100 students
+1000 students
+```
+
+before the program runs.
+
+Fixed arrays become inconvenient.
+
+---
+
+## 💡 Real-World Analogy
+
+### Static Allocation
+
+Booking a bus with exactly 50 seats 🚌
+
+Even if only 10 people come, all 50 seats are reserved.
+
+Wasteful.
+
+---
+
+### Dynamic Allocation
+
+Booking seats only when people arrive.
+
+Much more flexible.
+
+---
+
+# ⚙️ What is `malloc()`?
+
+`malloc()` means:
+
+> Memory Allocation
+
+It asks the operating system for memory while the program is running.
+
+---
+
+## Syntax
+
+```c
+ptr = (type *) malloc(size_in_bytes);
+```
+
+---
+
+## Example
+
+```c
+int *p;
+
+p = (int *)malloc(4);
+```
+
+Request:
+
+```text
+4 bytes
+```
+
+for one integer.
+
+---
+
+## Better Example
+
+```c
+int *p;
+
+p = (int *)malloc(5 * sizeof(int));
+```
+
+Request memory for:
+
+```text
+5 integers
+```
+
+---
+
+# 🧠 Why Use `sizeof()`?
+
+Instead of:
+
+```c
+malloc(20);
+```
+
+use:
+
+```c
+malloc(5 * sizeof(int));
+```
+
+Because:
+
+Different systems may store data types differently.
+
+`sizeof()` makes your code portable.
+
+---
+
+# 💻 Example
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int *p;
+
+    p = (int *)malloc(5 * sizeof(int));
+
+    p[0] = 10;
+    p[1] = 20;
+
+    printf("%d", p[1]);
+
+    return 0;
+}
+```
+
+Output:
+
+```text
+20
+```
+
+---
+
+# 🔥 Important Truth
+
+Memory allocated by `malloc()` contains:
+
+```text
+Garbage values
+```
+
+Initially.
+
+Example:
+
+```c
+int *p = malloc(5 * sizeof(int));
+```
+
+Before assigning values:
+
+```c
+printf("%d", p[0]);
+```
+
+may print anything.
+
+---
+
+## 🧠 Memory Trick
+
+Remember:
+
+**"malloc gives memory, not values."**
+
+---
+
+# 🧠 Concept 2: `calloc()` and `free()`
+
+---
+
+# ✅ `calloc()`
+
+`calloc()` means:
+
+> Contiguous Allocation
+
+It allocates memory AND initializes it to zero.
+
+---
+
+## Syntax
+
+```c
+calloc(number_of_elements, size_of_each_element);
+```
+
+---
+
+## Example
+
+```c
+int *p;
+
+p = (int *)calloc(5, sizeof(int));
+```
+
+Creates:
+
+```text
+0 0 0 0 0
+```
+
+---
+
+# ⚙️ Difference Between `malloc()` and `calloc()`
+
+| malloc()                  | calloc()         |
+| ------------------------- | ---------------- |
+| Garbage values            | Zero initialized |
+| One argument (total size) | Two arguments    |
+| Slightly faster           | Slightly slower  |
+
+---
+
+## 💡 Analogy
+
+### malloc()
+
+You rent an empty apartment 🏢
+
+Whatever is inside remains.
+
+---
+
+### calloc()
+
+You rent a cleaned apartment 🧹
+
+Everything starts fresh.
+
+---
+
+# ✅ `free()` – Releasing Memory
+
+This is VERY IMPORTANT.
+
+---
+
+## Why?
+
+When memory is allocated dynamically:
+
+```c
+malloc()
+calloc()
+```
+
+the operating system does NOT automatically reclaim it immediately.
+
+You must release it.
+
+---
+
+## Syntax
+
+```c
+free(pointer);
+```
+
+---
+
+## Example
+
+```c
+free(p);
+```
+
+---
+
+# 💡 Real-World Analogy
+
+Imagine renting a hotel room 🏨
+
+When leaving:
+
+You return the key.
+
+That is:
+
+```c
+free()
+```
+
+If you don't:
+
+The room remains occupied.
+
+---
+
+# ⚠️ Memory Leak
+
+Suppose:
+
+```c
+int *p = malloc(1000 * sizeof(int));
+```
+
+and you never:
+
+```c
+free(p);
+```
+
+Then memory remains reserved.
+
+This is called:
+
+# 🚨 Memory Leak
+
+Very common interview question.
+
+---
+
+# 🔥 Golden Rule
+
+Every:
+
+```c
+malloc()
+calloc()
+```
+
+should eventually have:
+
+```c
+free()
+```
+
+---
+
+# 🧠 Memory Trick
+
+Remember:
+
+**"Allocate → Use → Free"**
+
+---
+
+# 🎯 Interview Gold
+
+### Q1
+
+Difference between stack and heap?
+
+| Stack                 | Heap                  |
+| --------------------- | --------------------- |
+| Automatic memory      | Dynamic memory        |
+| Faster                | Flexible              |
+| Managed automatically | Managed by programmer |
+
+---
+
+### Q2
+
+Difference between `malloc()` and `calloc()`?
+
+Answer:
+
+`calloc()` initializes memory to zero.
+
+`malloc()` does not.
+
+---
+
+### Q3
+
+What is a memory leak?
+
+Answer:
+
+Allocated memory not released using `free()`.
+
+---
+
+### Q4
+
+Which header file contains DMA functions?
+
+Answer:
+
+```c
+#include <stdlib.h>
+```
+
+---
+
+# 🔗 Connection to What You Already Know
+
+Previously:
+
+```c
+int arr[5];
+```
+
+Size fixed at compile time.
+
+Now:
+
+```c
+int *arr = malloc(n * sizeof(int));
+```
+
+Size decided at runtime.
+
+This is much more powerful.
+
+---
+
+# 🚀 Today's Mini Tasks
+
+### Task 1
+
+Allocate memory for 5 integers using `malloc()`.
+
+Store values and print them.
+
+---
+
+### Task 2
+
+Allocate memory for 5 integers using `calloc()`.
+
+Print initial values.
+
+Observe they are all zero.
+
+---
+
+### Task 3
+
+Allocate memory and then free it.
+
+Practice the habit:
+
+```c
+Allocate → Use → Free
+```
+
+---
+
+# 🔥 What You Learned Today
+
+✔ Why dynamic memory is needed
+✔ `malloc()`
+✔ `calloc()`
+✔ `free()`
+✔ Memory leaks
+✔ Stack vs Heap basics
+
+---
+
+# 📈 Placement Readiness Update
+
+You are now around **65% complete**.
+
+### Major Topics Completed
+
+✅ Variables
+✅ Operators
+✅ Loops
+✅ Functions
+✅ Recursion
+✅ Arrays
+✅ Strings
+✅ Pointers
+✅ Call by Value/Reference
+✅ Dynamic Memory Allocation
+
+
