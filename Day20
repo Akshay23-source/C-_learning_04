@@ -1,0 +1,540 @@
+# 🔥 Day 20 – C Fundamentals (Placement Ready Learning)
+
+📅 Date: 28 March 2026
+
+Today we'll learn something that happens **before your C program even starts compiling**.
+
+# 🚀 Preprocessor Directives & Macros
+
+This is a favorite interview topic because it tests whether you understand:
+
+👉 How a C program is built internally.
+
+---
+
+# 🧠 Concept 1: Preprocessor Directives (`#include`, `#define`)
+
+## ✅ What is a Preprocessor?
+
+When you press:
+
+```text
+Compile
+```
+
+your code does **not** go directly to the compiler.
+
+There is a step before that:
+
+```text
+Source Code
+    ↓
+Preprocessor
+    ↓
+Compiler
+    ↓
+Executable Program
+```
+
+The preprocessor processes all lines starting with:
+
+```c
+#
+```
+
+---
+
+## 💡 Real-World Analogy
+
+Imagine a chef 👨‍🍳
+
+Before cooking:
+
+* Collects ingredients
+* Reads instructions
+* Organizes kitchen
+
+Only then starts cooking.
+
+Similarly:
+
+👉 Preprocessor prepares code before compilation.
+
+---
+
+# ✅ `#include`
+
+Example:
+
+```c
+#include <stdio.h>
+```
+
+---
+
+## What Really Happens?
+
+Many students think:
+
+```c
+#include <stdio.h>
+```
+
+means:
+
+> "Use stdio.h"
+
+Not exactly.
+
+It actually means:
+
+> "Copy the contents of stdio.h here before compilation."
+
+---
+
+## 💡 Analogy
+
+Think of a book 📖
+
+Instead of rewriting Chapter 5 every time,
+
+you say:
+
+```text
+Insert Chapter 5 here
+```
+
+That's what `#include` does.
+
+---
+
+## Why We Need It
+
+Functions like:
+
+```c
+printf()
+scanf()
+```
+
+are defined in:
+
+```c
+stdio.h
+```
+
+Without including it:
+
+```c
+printf("Hello");
+```
+
+the compiler doesn't know what `printf()` is.
+
+---
+
+# 🧠 Memory Trick
+
+Remember:
+
+**"#include copies code before compilation."**
+
+---
+
+# ✅ `#define`
+
+Used to create constants.
+
+Example:
+
+```c
+#define PI 3.14159
+```
+
+---
+
+## What Happens?
+
+When compiler sees:
+
+```c
+PI
+```
+
+it replaces it with:
+
+```c
+3.14159
+```
+
+before compilation.
+
+---
+
+## Example
+
+```c
+#define PI 3.14
+
+printf("%f", PI);
+```
+
+Preprocessor converts it into:
+
+```c
+printf("%f", 3.14);
+```
+
+---
+
+## 💡 Real-World Analogy
+
+Think of "PI" as a nickname.
+
+Whenever someone says:
+
+```text
+PI
+```
+
+everyone understands:
+
+```text
+3.14
+```
+
+---
+
+# 🔥 Why Use `#define` Instead of Variables?
+
+Variable:
+
+```c
+float pi = 3.14;
+```
+
+occupies memory.
+
+Macro:
+
+```c
+#define PI 3.14
+```
+
+occupies no memory.
+
+It's simply text replacement.
+
+---
+
+## 🧠 Memory Trick
+
+Remember:
+
+**"#define = Find and Replace before compilation."**
+
+---
+
+# 🧠 Concept 2: Macros (The Hidden Power of `#define`)
+
+---
+
+# ✅ What is a Macro?
+
+A macro is a reusable code template.
+
+Example:
+
+```c
+#define SQUARE(x) x*x
+```
+
+---
+
+## Usage
+
+```c
+SQUARE(5)
+```
+
+becomes:
+
+```c
+5*5
+```
+
+---
+
+## 💻 Example
+
+```c
+#include <stdio.h>
+
+#define SQUARE(x) ((x)*(x))
+
+int main()
+{
+    printf("%d", SQUARE(4));
+
+    return 0;
+}
+```
+
+Output:
+
+```text
+16
+```
+
+---
+
+# ⚠️ VERY IMPORTANT INTERVIEW TRAP
+
+Suppose:
+
+```c
+#define SQUARE(x) x*x
+```
+
+Now:
+
+```c
+SQUARE(2+3)
+```
+
+becomes:
+
+```c
+2+3*2+3
+```
+
+Output:
+
+```text
+11
+```
+
+❌ Wrong
+
+Expected:
+
+```text
+25
+```
+
+---
+
+# ✅ Correct Macro
+
+```c
+#define SQUARE(x) ((x)*(x))
+```
+
+Now:
+
+```c
+((2+3)*(2+3))
+```
+
+Output:
+
+```text
+25
+```
+
+---
+
+# 💡 Real-World Analogy
+
+Think of a macro like a rubber stamp 🖋️
+
+Whenever used:
+
+it expands into predefined text.
+
+---
+
+# 🔥 Header Files
+
+You already use them:
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+```
+
+---
+
+## Why Header Files Exist?
+
+Imagine a huge project.
+
+Instead of putting everything into one file:
+
+you organize code into modules.
+
+Header files contain:
+
+* Function declarations
+* Constants
+* Macros
+
+---
+
+## Common Header Files
+
+| Header File | Purpose                |
+| ----------- | ---------------------- |
+| `stdio.h`   | Input/Output           |
+| `stdlib.h`  | Memory allocation      |
+| `string.h`  | String functions       |
+| `math.h`    | Mathematical functions |
+
+---
+
+# 🎯 Interview Gold
+
+### Q1
+
+What is a preprocessor?
+
+Answer:
+
+A program that processes directives before compilation.
+
+---
+
+### Q2
+
+What does `#include` do?
+
+Answer:
+
+Copies contents of a header file before compilation.
+
+---
+
+### Q3
+
+Difference between macro and variable?
+
+| Macro            | Variable       |
+| ---------------- | -------------- |
+| No memory        | Uses memory    |
+| Text replacement | Actual storage |
+| Faster           | Runtime access |
+
+---
+
+### Q4
+
+What is the benefit of header files?
+
+Answer:
+
+Code organization and reusability.
+
+---
+
+# 🔗 Connection to What You Already Know
+
+Previously:
+
+```c
+int radius = 5;
+```
+
+used memory.
+
+Today:
+
+```c
+#define PI 3.14
+```
+
+uses no memory.
+
+The value is substituted before compilation.
+
+This is why macros are powerful.
+
+---
+
+# 🚀 Today's Mini Tasks
+
+### Task 1
+
+Create:
+
+```c
+#define PI 3.14
+```
+
+Calculate area of a circle.
+
+---
+
+### Task 2
+
+Create a macro:
+
+```c
+MAX(a,b)
+```
+
+that returns the larger number.
+
+---
+
+### Task 3
+
+Use:
+
+```c
+#include <math.h>
+```
+
+and try:
+
+```c
+sqrt(25)
+```
+
+---
+
+# 🔥 What You Learned Today
+
+✔ What a preprocessor is
+✔ `#include`
+✔ `#define`
+✔ Macros
+✔ Header files
+✔ Macro pitfalls
+
+---
+
+# 📈 Placement Readiness Update
+
+You are now around **85% complete**.
+
+### Topics Completed
+
+✅ Variables & Data Types
+✅ Operators
+✅ Conditions & Loops
+✅ Functions
+✅ Recursion
+✅ Scope & Storage Classes
+✅ Arrays
+✅ Strings
+✅ Pointers
+✅ Dynamic Memory Allocation
+✅ Structures
+✅ Structure Pointers
+✅ File Handling
+✅ Preprocessor & Macros
+
+---
+
+
