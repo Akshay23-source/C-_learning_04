@@ -1,0 +1,475 @@
+# 🔥 Day 21 – C Fundamentals (Placement Ready Learning)
+
+📅 Date: 29 March 2026
+
+Today we'll learn two small but important topics that interviewers frequently ask:
+
+# 🚀 `typedef` and `enum`
+
+These topics are not difficult, but they make your code more readable and professional.
+
+---
+
+# 🧠 Concept 1: `typedef` (Creating Nicknames for Data Types)
+
+## ✅ The Problem
+
+Suppose you have:
+
+```c
+unsigned long long int salary;
+```
+
+Imagine writing this 50 times.
+
+😫 Long and annoying.
+
+---
+
+## 💡 Real-World Analogy
+
+Think of a person named:
+
+```text
+Akshay Gabriel Fernandes
+```
+
+Instead of saying the full name every time, people say:
+
+```text
+Akshay
+```
+
+That's exactly what `typedef` does.
+
+👉 It creates a nickname.
+
+---
+
+## ✅ Syntax
+
+```c
+typedef existing_type new_name;
+```
+
+---
+
+## Example
+
+```c
+typedef unsigned long long int ULL;
+```
+
+Now:
+
+```c
+ULL salary;
+```
+
+means:
+
+```c
+unsigned long long int salary;
+```
+
+---
+
+## ⚙️ Why It Works
+
+The compiler treats:
+
+```c
+ULL
+```
+
+as:
+
+```c
+unsigned long long int
+```
+
+It's simply an alias (nickname).
+
+---
+
+## 💻 Example
+
+```c
+#include <stdio.h>
+
+typedef int Integer;
+
+int main()
+{
+    Integer x = 10;
+
+    printf("%d", x);
+
+    return 0;
+}
+```
+
+Output:
+
+```text
+10
+```
+
+---
+
+## 🔥 Common Use with Structures
+
+Without typedef:
+
+```c
+struct Student
+{
+    int age;
+};
+
+struct Student s1;
+```
+
+---
+
+With typedef:
+
+```c
+typedef struct
+{
+    int age;
+} Student;
+
+Student s1;
+```
+
+Much cleaner.
+
+---
+
+## 🧠 Memory Trick
+
+Remember:
+
+**"typedef creates a nickname, not a new data type."**
+
+---
+
+# 🧠 Concept 2: `enum` (Named Integer Constants)
+
+---
+
+## ✅ The Problem
+
+Suppose:
+
+```c
+int day = 1;
+```
+
+What does 1 mean?
+
+```text
+Monday?
+Tuesday?
+Wednesday?
+```
+
+Nobody knows.
+
+---
+
+## 💡 Real-World Analogy
+
+Instead of remembering:
+
+```text
+1 = Monday
+2 = Tuesday
+3 = Wednesday
+```
+
+you give meaningful names.
+
+That's what `enum` does.
+
+---
+
+## ✅ Syntax
+
+```c
+enum Day
+{
+    MONDAY,
+    TUESDAY,
+    WEDNESDAY
+};
+```
+
+---
+
+## What Happens Internally?
+
+C automatically assigns:
+
+```text
+MONDAY     = 0
+TUESDAY    = 1
+WEDNESDAY  = 2
+```
+
+---
+
+## 💻 Example
+
+```c
+#include <stdio.h>
+
+enum Day
+{
+    MONDAY,
+    TUESDAY,
+    WEDNESDAY
+};
+
+int main()
+{
+    enum Day today = TUESDAY;
+
+    printf("%d", today);
+
+    return 0;
+}
+```
+
+Output:
+
+```text
+1
+```
+
+---
+
+## ⚙️ Why Use Enum?
+
+Instead of:
+
+```c
+if(day == 2)
+```
+
+write:
+
+```c
+if(day == WEDNESDAY)
+```
+
+Much more readable.
+
+---
+
+## 🔥 Custom Values
+
+You can assign values manually.
+
+```c
+enum Day
+{
+    MONDAY = 1,
+    TUESDAY = 2,
+    WEDNESDAY = 3
+};
+```
+
+Now:
+
+```text
+MONDAY = 1
+TUESDAY = 2
+WEDNESDAY = 3
+```
+
+---
+
+## 💻 Example
+
+```c
+enum Status
+{
+    SUCCESS = 200,
+    NOT_FOUND = 404,
+    SERVER_ERROR = 500
+};
+```
+
+This is similar to HTTP status codes.
+
+---
+
+## 🧠 Memory Trick
+
+Remember:
+
+**"enum gives names to numbers."**
+
+---
+
+# 🎯 Interview Gold
+
+## Q1: Difference Between `#define` and `enum`?
+
+| `#define`            | `enum`                  |
+| -------------------- | ----------------------- |
+| Text replacement     | Named integer constants |
+| No type checking     | Better type safety      |
+| Preprocessor feature | Compiler feature        |
+
+---
+
+## Q2: Does `typedef` create a new data type?
+
+Answer:
+
+❌ No
+
+It only creates an alias.
+
+---
+
+## Q3: What value does the first enum member get?
+
+Answer:
+
+```text
+0
+```
+
+by default.
+
+---
+
+## Q4: Can enum values be assigned manually?
+
+Answer:
+
+✅ Yes.
+
+```c
+enum Day
+{
+    MONDAY = 100
+};
+```
+
+---
+
+# 🔗 Connection to What You Already Know
+
+Previously:
+
+```c
+#define PI 3.14
+```
+
+created a name for a value.
+
+Today:
+
+```c
+enum Day
+{
+    MONDAY
+};
+```
+
+creates meaningful names for integer constants.
+
+And:
+
+```c
+typedef int Integer;
+```
+
+creates meaningful names for data types.
+
+---
+
+# 🚀 Today's Mini Tasks
+
+### Task 1
+
+Create:
+
+```c
+typedef float Decimal;
+```
+
+Use it to declare variables.
+
+---
+
+### Task 2
+
+Create:
+
+```c
+enum Month
+{
+    JAN,
+    FEB,
+    MAR
+};
+```
+
+Print values.
+
+---
+
+### Task 3
+
+Create an enum for:
+
+```text
+SUCCESS
+FAILURE
+PENDING
+```
+
+and use it in a program.
+
+---
+
+# 🔥 What You Learned Today
+
+✔ `typedef`
+✔ Why typedef is useful
+✔ `enum`
+✔ Automatic enum values
+✔ Custom enum values
+✔ Difference between typedef and enum
+
+---
+
+# 📈 Placement Readiness Update
+
+You are now around **90% complete**.
+
+### Completed Core Fundamentals
+
+✅ Variables & Data Types
+✅ Operators
+✅ Conditions & Loops
+✅ Functions
+✅ Recursion
+✅ Scope & Storage Classes
+✅ Arrays
+✅ Strings
+✅ Pointers
+✅ Dynamic Memory Allocation
+✅ Structures
+✅ Structure Pointers
+✅ File Handling
+✅ Preprocessor & Macros
+✅ Typedef & Enum
+
+
