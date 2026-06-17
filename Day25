@@ -1,0 +1,470 @@
+# 🔥 Day 25 – C Fundamentals (Placement Ready Learning)
+
+📅 Date: 2 April 2026
+
+Today we'll cover **some of the most frequently asked memory-related interview questions**. These questions are especially common because they test whether you understand how C manages memory.
+
+---
+
+# 🧠 Concept 1: NULL Pointer, Wild Pointer, Dangling Pointer
+
+Many students confuse these three. Let's make them unforgettable.
+
+---
+
+# ✅ 1. NULL Pointer
+
+## What is it?
+
+A NULL pointer points to **nothing**.
+
+```c
+int *p = NULL;
+```
+
+It is a pointer that intentionally does not point to any valid memory.
+
+---
+
+## 💡 Real-World Analogy
+
+Imagine you have a delivery address field:
+
+```text
+Address: None
+```
+
+The address is intentionally empty.
+
+That's a NULL pointer.
+
+---
+
+## Why do we use it?
+
+Suppose you declare:
+
+```c
+int *p = NULL;
+```
+
+Later:
+
+```c
+p = &x;
+```
+
+Now it safely points to `x`.
+
+Initializing pointers to `NULL` prevents accidental bugs.
+
+---
+
+## ⚠️ Important
+
+```c
+*p = 10;
+```
+
+when:
+
+```c
+p = NULL;
+```
+
+❌ Causes a crash (undefined behavior).
+
+---
+
+## 🧠 Memory Trick
+
+**"NULL = points to nothing safely."**
+
+---
+
+# ✅ 2. Wild Pointer
+
+## What is it?
+
+A pointer that has **not been initialized**.
+
+```c
+int *p;
+```
+
+`p` now contains a random memory address.
+
+---
+
+## 💡 Real-World Analogy
+
+Someone gives you a random house number.
+
+You have no idea whose house it is.
+
+Going there is dangerous.
+
+---
+
+## Why is it dangerous?
+
+```c
+int *p;
+
+*p = 20;
+```
+
+`p` may point anywhere.
+
+The program may:
+
+* Crash
+* Corrupt memory
+* Behave unpredictably
+
+---
+
+## Correct Way
+
+```c
+int *p = NULL;
+```
+
+or
+
+```c
+int *p = &x;
+```
+
+---
+
+## 🧠 Memory Trick
+
+**"Wild pointer = random address."**
+
+---
+
+# ✅ 3. Dangling Pointer
+
+## What is it?
+
+A pointer that points to memory that is **no longer valid**.
+
+---
+
+## Example
+
+```c
+int *p = malloc(sizeof(int));
+
+free(p);
+```
+
+Now:
+
+```c
+p
+```
+
+still stores the old address.
+
+But that memory has been released.
+
+Now `p` is a **dangling pointer**.
+
+---
+
+## Correct Practice
+
+Immediately after:
+
+```c
+free(p);
+```
+
+write:
+
+```c
+p = NULL;
+```
+
+This prevents accidental access.
+
+---
+
+## 💡 Real-World Analogy
+
+Imagine your friend moves out of a rented house.
+
+You still have the old address.
+
+If you go there expecting your friend, they're no longer there.
+
+That's a dangling pointer.
+
+---
+
+## 🧠 Memory Trick
+
+**"Dangling pointer = old address, memory already gone."**
+
+---
+
+# 🎯 Quick Comparison
+
+| Pointer Type     | Meaning                      |
+| ---------------- | ---------------------------- |
+| NULL Pointer     | Points nowhere intentionally |
+| Wild Pointer     | Never initialized            |
+| Dangling Pointer | Points to freed memory       |
+
+---
+
+# 🧠 Concept 2: Memory Leak & Static Variables
+
+---
+
+# ✅ Memory Leak
+
+## What is it?
+
+Memory is allocated but never released.
+
+Example:
+
+```c
+int *p = malloc(100 * sizeof(int));
+```
+
+If you forget:
+
+```c
+free(p);
+```
+
+that memory remains occupied.
+
+---
+
+## Why is it bad?
+
+Imagine a hotel.
+
+People keep booking rooms.
+
+Nobody checks out.
+
+Eventually:
+
+❌ No rooms left.
+
+That's a memory leak.
+
+---
+
+## Golden Rule
+
+```text
+malloc()
+↓
+Use
+↓
+free()
+```
+
+Never forget the last step.
+
+---
+
+## 🧠 Memory Trick
+
+**"Every malloc should have one free."**
+
+---
+
+# ✅ Static Variable Revision
+
+Consider:
+
+```c
+void fun()
+{
+    static int count = 0;
+
+    count++;
+
+    printf("%d\n", count);
+}
+```
+
+Calling:
+
+```c
+fun();
+fun();
+fun();
+```
+
+Output:
+
+```text
+1
+2
+3
+```
+
+---
+
+## Why?
+
+Because a static variable:
+
+* is created only once
+* remembers its value between function calls
+
+---
+
+## Real-World Analogy
+
+Think of a notebook 📒.
+
+Normal variable:
+
+A rough sheet.
+
+Thrown away after use.
+
+Static variable:
+
+A permanent notebook.
+
+It remembers everything.
+
+---
+
+# 🎯 Interview Gold
+
+## Q1
+
+Difference between NULL and Wild Pointer?
+
+Answer:
+
+* NULL → intentionally points to nothing.
+* Wild → contains an unknown/random address.
+
+---
+
+## Q2
+
+How do you avoid dangling pointers?
+
+Answer:
+
+After:
+
+```c
+free(p);
+```
+
+write:
+
+```c
+p = NULL;
+```
+
+---
+
+## Q3
+
+What causes memory leaks?
+
+Answer:
+
+Allocated memory not released using `free()`.
+
+---
+
+## Q4
+
+Why use static variables?
+
+Answer:
+
+To preserve values between function calls.
+
+---
+
+# 🔗 Connection to Previous Lessons
+
+You've already learned:
+
+* `malloc()`
+* `free()`
+* pointers
+
+Today you learned what happens when they are **used incorrectly**.
+
+This is exactly the kind of understanding interviewers look for.
+
+---
+
+# 🚀 Today's Mini Tasks
+
+### Task 1
+
+Write a program that:
+
+* allocates memory
+* stores values
+* frees memory
+* sets pointer to `NULL`
+
+---
+
+### Task 2
+
+Modify the static counter program and predict its output before running it.
+
+---
+
+### Task 3
+
+Explain in your own words:
+
+* NULL Pointer
+* Wild Pointer
+* Dangling Pointer
+
+If you can explain them without looking at notes, you've truly understood them.
+
+---
+
+# 🔥 What You Learned Today
+
+✔ NULL Pointer
+✔ Wild Pointer
+✔ Dangling Pointer
+✔ Memory Leak
+✔ Static Variable revision
+✔ Safe pointer practices
+
+---
+
+# 📈 Placement Readiness Update
+
+### Overall Progress
+
+🟢 **98% Complete**
+
+You've now covered **all major C fundamentals** expected in most placement interviews.
+
+The remaining sessions will focus on:
+
+* Output prediction mastery
+* Common debugging questions
+* Frequently asked interview questions
+* Mini mock interviews
+* Rapid revision of all topics
+
+These final lessons will help you convert your knowledge into confidence during interviews. 🚀
