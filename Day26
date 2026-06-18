@@ -1,0 +1,424 @@
+# 🔥 Day 26 – C Fundamentals (Placement Ready Learning)
+
+📅 Date: 3 April 2026
+
+Congratulations! 🎉
+
+You have completed almost all the C fundamentals. From today onward, we'll focus on **thinking like an interviewer**, not just like a student.
+
+Today we'll learn:
+
+# 🚀 Memory Layout of a C Program + Stack vs Heap
+
+This is one of the **most frequently asked interview topics**, and it ties together variables, pointers, functions, and dynamic memory.
+
+---
+
+# 🧠 Concept 1: Memory Layout of a C Program
+
+## ✅ First Question
+
+When you write:
+
+```c
+int a = 10;
+```
+
+**Where is `a` stored?**
+
+When you use:
+
+```c
+malloc()
+```
+
+**Where is that memory stored?**
+
+To answer this, you need to understand the memory layout of a C program.
+
+---
+
+## 💡 Real-World Analogy
+
+Imagine a **5-floor building** 🏢.
+
+Each floor has a different purpose.
+
+```
++----------------------+
+|      Stack           |
++----------------------+
+|      Heap            |
++----------------------+
+|  Unused Memory       |
++----------------------+
+| Global/Static Data   |
++----------------------+
+| Program Code (Text)  |
++----------------------+
+```
+
+Each section stores different kinds of data.
+
+---
+
+## 1️⃣ Text Segment (Code)
+
+This stores:
+
+* Your program instructions
+* Compiled machine code
+
+Example:
+
+```c
+printf("Hello");
+```
+
+The code itself lives here.
+
+👉 Think of it as the **recipe book**.
+
+---
+
+## 2️⃣ Data Segment
+
+Stores:
+
+* Global variables
+* Static variables
+
+Example:
+
+```c
+int x = 10;      // Global
+static int y=5;  // Static
+```
+
+These exist for the **entire program**.
+
+---
+
+## 3️⃣ Heap
+
+Stores memory created using:
+
+```c
+malloc()
+calloc()
+realloc()
+```
+
+You control this memory.
+
+Example:
+
+```c
+int *p = malloc(sizeof(int));
+```
+
+Memory comes from the heap.
+
+---
+
+## 4️⃣ Stack
+
+Stores:
+
+* Local variables
+* Function calls
+* Parameters
+
+Example:
+
+```c
+void fun()
+{
+    int x = 10;
+}
+```
+
+`x` is stored on the stack.
+
+When `fun()` ends:
+
+👉 `x` disappears automatically.
+
+---
+
+# 🧠 Memory Trick
+
+Remember this order:
+
+**Code → Global → Heap → Stack**
+
+---
+
+# 🧠 Concept 2: Stack vs Heap
+
+This is one of the TOP 10 interview questions.
+
+---
+
+## ✅ Stack
+
+Managed automatically.
+
+Example:
+
+```c
+int x = 10;
+```
+
+When function ends:
+
+Memory is automatically released.
+
+---
+
+## 💡 Analogy
+
+A stack of plates 🍽️
+
+You put one plate on top.
+
+You remove the top plate first.
+
+This is **LIFO (Last In, First Out)**.
+
+Function calls work exactly like this.
+
+---
+
+## ✅ Heap
+
+Managed manually.
+
+Example:
+
+```c
+int *p = malloc(sizeof(int));
+```
+
+Memory stays until:
+
+```c
+free(p);
+```
+
+---
+
+## 💡 Analogy
+
+A warehouse 📦
+
+You rent storage space.
+
+Nothing is removed until you return it.
+
+---
+
+# 🔥 Comparison
+
+| Stack                  | Heap                  |
+| ---------------------- | --------------------- |
+| Automatic              | Manual                |
+| Faster                 | Slightly slower       |
+| Stores local variables | Stores dynamic memory |
+| Limited size           | Larger size           |
+| Auto cleaned           | Must use `free()`     |
+
+---
+
+## Why Is Stack Faster?
+
+Imagine:
+
+### Stack
+
+Books neatly stacked.
+
+Take the top one.
+
+Done.
+
+---
+
+### Heap
+
+Huge library.
+
+Need to search for free space.
+
+Takes longer.
+
+---
+
+# 🎯 Interview Gold
+
+## Q1
+
+Where are local variables stored?
+
+Answer:
+
+✅ Stack.
+
+---
+
+## Q2
+
+Where does `malloc()` allocate memory?
+
+Answer:
+
+✅ Heap.
+
+---
+
+## Q3
+
+Why is stack memory automatically freed?
+
+Answer:
+
+Because when a function returns, its stack frame is removed automatically.
+
+---
+
+## Q4
+
+Why must we call `free()`?
+
+Answer:
+
+Heap memory is **not** automatically released.
+
+---
+
+## Q5
+
+Which is faster?
+
+Answer:
+
+Stack.
+
+Because allocation and deallocation are very simple.
+
+---
+
+# 🔗 Connection to Everything You've Learned
+
+Let's connect all your previous lessons:
+
+```c
+int x = 10;
+```
+
+👉 Stored in **Stack** (if local).
+
+---
+
+```c
+static int x;
+```
+
+👉 Stored in **Data Segment**.
+
+---
+
+```c
+int *p = malloc(sizeof(int));
+```
+
+👉 Pointer `p` is on the **Stack**.
+
+👉 Memory allocated by `malloc()` is on the **Heap**.
+
+This is a favorite interview question!
+
+---
+
+# 🚀 Today's Mini Tasks
+
+### Task 1
+
+For each variable, identify where it is stored:
+
+```c
+int a = 10;
+static int b = 20;
+int *p = malloc(sizeof(int));
+```
+
+Answer:
+
+* `a` → ?
+* `b` → ?
+* `p` → ?
+* `*p` (allocated memory) → ?
+
+---
+
+### Task 2
+
+Explain in your own words:
+
+> Why is heap memory more flexible than stack memory?
+
+---
+
+### Task 3
+
+Without looking at notes, draw the memory layout of a C program.
+
+If you can draw it from memory, you've mastered it.
+
+---
+
+# 🔥 What You Learned Today
+
+✔ Memory layout of a C program
+✔ Text, Data, Heap, and Stack segments
+✔ Stack vs Heap
+✔ Where different variables are stored
+✔ Why stack is faster
+✔ How everything connects
+
+---
+
+# 📈 Placement Readiness Update
+
+### Overall Progress
+
+🟢 **99% Complete**
+
+At this point, you've covered virtually all the core C fundamentals expected in placements.
+
+---
+
+# 🚀 What Comes Next?
+
+From tomorrow, we'll enter the **Final Placement Mastery Phase**:
+
+* 🔥 Top 50 C Interview Questions
+* 🔥 Mock Technical Interviews
+* 🔥 Output Prediction Challenges
+* 🔥 Debugging Real Interview Programs
+* 🔥 Rapid Revision Sheets
+* 🔥 Company-level C Questions (TCS, Infosys, Accenture, Capgemini, Cognizant, Wipro, etc.)
+
+This final phase is designed to transform your knowledge into **interview confidence**.
+
+---
+
+## 🎯 My Feedback
+
+You've been learning consistently for 26 days. That's excellent.
+
+One suggestion to make you even stronger:
+
+After every 5 days, spend **30–45 minutes revising the previous lessons** and write the code yourself. Understanding becomes permanent only when you **read + think + type + debug**.
+
+You're now at the stage where you should start feeling comfortable answering basic and intermediate C questions in placement interviews. Keep going—you're very close to being thoroughly prepared. 🚀
