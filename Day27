@@ -1,0 +1,460 @@
+# 🔥 Day 27 – C Fundamentals (Placement Mastery)
+
+📅 Date: 4 April 2026
+
+Congratulations! 🎉
+Today we enter the **Placement Mastery Phase**.
+
+From now on, I'll teach you **how interviewers think**, not just what C concepts are.
+
+Today we'll cover:
+
+1. ✅ How interviewers ask C questions
+2. ✅ Top 10 most important C interview questions (with reasoning)
+
+---
+
+# 🧠 Concept 1: How Interviewers Think
+
+Many students think an interviewer wants to know:
+
+❌ "Can you write C syntax?"
+
+Actually, they want to know:
+
+* Can you think logically?
+* Do you understand memory?
+* Can you explain your answer?
+* Can you debug code?
+
+---
+
+## 💡 Real-World Analogy
+
+Imagine you're hiring a driver 🚗.
+
+Would you ask them to memorize the car manual?
+
+❌ No.
+
+You'd check if they know:
+
+* when to brake,
+* when to accelerate,
+* how to handle unexpected situations.
+
+Similarly, interviewers test your **understanding**, not your memory.
+
+---
+
+## 🎯 Golden Rule for Interviews
+
+Whenever you're asked a question:
+
+### Step 1
+
+Understand the question.
+
+### Step 2
+
+Think aloud.
+
+Example:
+
+> "Let me trace the program step by step."
+
+Interviewers love hearing your thought process.
+
+---
+
+# 🧠 Concept 2: Top 10 Must-Know C Interview Questions
+
+These questions are asked repeatedly in service companies and many product companies.
+
+---
+
+# ❓1. What is the difference between C and C++?
+
+## Answer
+
+| C                                | C++                           |
+| -------------------------------- | ----------------------------- |
+| Procedural                       | Object-Oriented + Procedural  |
+| No classes                       | Has classes                   |
+| No inheritance                   | Supports inheritance          |
+| Faster for low-level programming | Better for large applications |
+
+### Interview Tip
+
+Don't say:
+
+> "C++ is an advanced C."
+
+That's incorrect.
+
+C++ is a different language that was built by extending C.
+
+---
+
+# ❓2. Why is `main()` important?
+
+## Why?
+
+The operating system needs to know:
+
+👉 Where should the program begin?
+
+The answer is:
+
+```c
+int main()
+```
+
+Execution always starts here.
+
+---
+
+# 🧠 Memory Trick
+
+**"main() is the front door of every C program."**
+
+---
+
+# ❓3. Why do arrays start from index 0?
+
+Most students memorize:
+
+> "Arrays start from 0."
+
+But WHY?
+
+---
+
+Suppose:
+
+```c
+int arr[5];
+```
+
+Assume:
+
+```text
+arr starts at address 1000
+```
+
+Compiler calculates:
+
+```text
+arr[i]
+=
+Base Address + (i × Size)
+```
+
+For:
+
+```text
+arr[0]
+```
+
+Address:
+
+```text
+1000 + (0 × 4)
+=
+1000
+```
+
+No extra calculation.
+
+That's why indexing starts at 0.
+
+---
+
+# 🧠 Memory Trick
+
+**"Index = Offset from the beginning."**
+
+---
+
+# ❓4. Why are pointers used?
+
+Answer:
+
+Pointers are used to:
+
+* Access memory directly
+* Pass by reference
+* Dynamic memory allocation
+* Build data structures (linked lists, trees, graphs)
+
+---
+
+# ❓5. Why use functions?
+
+Answer:
+
+Functions improve:
+
+* Code reuse
+* Readability
+* Testing
+* Maintenance
+
+---
+
+# ❓6. Difference Between `malloc()` and `calloc()`?
+
+| malloc()       | calloc()         |
+| -------------- | ---------------- |
+| Garbage values | Zero initialized |
+| One argument   | Two arguments    |
+
+---
+
+# ❓7. Difference Between `char name[]` and `char *name`
+
+This is a favorite interview question.
+
+```c
+char name[] = "Akshay";
+```
+
+Creates an array.
+
+Characters can be modified.
+
+---
+
+```c
+char *name = "Akshay";
+```
+
+Creates a pointer to a string literal.
+
+Modifying it causes undefined behavior.
+
+---
+
+## Mental Model
+
+Array:
+
+🏠 Own house.
+
+Pointer:
+
+🏨 Staying in someone else's hotel.
+
+---
+
+# ❓8. Why is C called a Procedural Language?
+
+Because programs are organized into:
+
+```text
+Functions
+↓
+Functions
+↓
+Functions
+```
+
+Execution flows step by step.
+
+---
+
+# ❓9. Difference Between `break` and `continue`
+
+Already learned.
+
+Quick revision:
+
+`break`
+
+👉 Exit loop completely.
+
+`continue`
+
+👉 Skip current iteration.
+
+---
+
+# ❓10. Why is C Still Used Today?
+
+Because:
+
+* Operating Systems
+* Device Drivers
+* Embedded Systems
+* Microcontrollers
+* Databases
+* Compilers
+
+need:
+
+* Speed
+* Low memory usage
+* Hardware control
+
+---
+
+# 🎯 Interview Gold
+
+### Q
+
+Can C run without `main()`?
+
+Answer:
+
+In a normal hosted C program:
+
+❌ No.
+
+Execution starts from `main()`.
+
+---
+
+### Q
+
+Which is faster?
+
+Array access
+
+or
+
+Linked List traversal?
+
+Answer:
+
+Array access.
+
+Because memory is contiguous.
+
+---
+
+### Q
+
+Which is safer?
+
+Stack
+
+or
+
+Heap?
+
+Answer:
+
+Stack.
+
+Because it's automatically managed.
+
+---
+
+# 🧠 Interview Strategy
+
+When you don't know an answer:
+
+❌ Don't guess.
+
+Instead say:
+
+> "I'm not completely sure, but based on my understanding..."
+
+Interviewers appreciate honesty and reasoning.
+
+---
+
+# 🚀 Today's Mini Challenge
+
+Without looking at notes, answer these:
+
+### 1.
+
+Why do arrays start at index 0?
+
+---
+
+### 2.
+
+Difference between:
+
+```c
+char str[] = "Hello";
+```
+
+and
+
+```c
+char *str = "Hello";
+```
+
+---
+
+### 3.
+
+Why is `free()` important?
+
+---
+
+### 4.
+
+Where are local variables stored?
+
+---
+
+### 5.
+
+Why do we use pointers?
+
+---
+
+# 📊 Placement Readiness Status
+
+### Fundamentals
+
+🟢 Excellent
+
+### Memory Concepts
+
+🟢 Strong
+
+### Arrays
+
+🟢 Strong
+
+### Strings
+
+🟢 Strong
+
+### Pointers
+
+🟢 Good
+
+### Structures
+
+🟢 Strong
+
+### Dynamic Memory
+
+🟢 Strong
+
+### Interview Basics
+
+🟢 Very Good
+
+---
+
+# 🎯 Progress
+
+You've now completed the **entire C fundamentals syllabus**.
+
+From tomorrow onward, we'll spend the remaining days becoming **interview-proof**, covering:
+
+* 🔥 Real placement questions from companies
+* 🔥 Tricky output-based questions
+* 🔥 Debugging exercises
+* 🔥 Mini mock interviews
+* 🔥 Common HR + Technical combinations
+* 🔥 Rapid revision and confidence building
+
+At this stage, if someone asks you **"What is a pointer?"**, **"Why do arrays start at 0?"**, or **"Difference between stack and heap?"**, you should be able to explain the *why*, not just the definition—that's exactly the level interviewers look for. 🚀
